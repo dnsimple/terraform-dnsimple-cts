@@ -1,0 +1,37 @@
+## Global Config
+log_level = "DEBUG"
+port      = 8558
+
+syslog {
+  enabled = false
+}
+
+buffer_period {
+  enabled = true
+  min     = "5s"
+  max     = "20s"
+}
+
+# Consul Block
+consul {
+  address = "consul-server:8500"
+}
+
+# Driver "terraform" block
+driver "terraform" {
+  log         = true
+  persist_log = false
+}
+
+# Task Block
+task {
+  name        = "dnsimple-task"
+  description = "Create/delete/update DNS records"
+  version     = "1.0.0"
+  module      = "/dnsimple-consul"
+
+  condition "services" {
+    names = ["web", "api"]
+  }
+  variable_files = ["/dnsimple-consul/test/terraform.tfvars"]
+}

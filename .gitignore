@@ -1,0 +1,9 @@
+# Terraform generated content
+.terraform/
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# tfvars files
+*.tfvars
