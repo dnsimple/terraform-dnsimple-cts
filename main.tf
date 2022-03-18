@@ -15,7 +15,7 @@ provider "dnsimple" {
 
 # Add a record to a service specific domain
 resource "dnsimple_zone_record" "records_a" {
-  for_each = local.services
+  for_each = local.consul_services
 
   zone_name = each.value.zone_name
   name      = each.value.record_name
@@ -25,7 +25,7 @@ resource "dnsimple_zone_record" "records_a" {
 }
 
 locals {
-  services = {
+  consul_services = {
     for id, s in var.services :
     id => {
       "name"        = s.name,
