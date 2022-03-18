@@ -22,7 +22,7 @@ cd terraform-dnsimple-dns-record-sync-nia
 
 ### Testing without running CTS and Consul
 
-Add the required variables to test the integration, making sure to uncomment the `services` variable.
+Add the required variables to test the integration.
 ```shell
 cp test/terraform.tfvars.example test/terraform.tfvars
 ```
@@ -39,7 +39,7 @@ terraform apply --var-file="test/terraform.tfvars"
 
 ### Testing e2e with Docker Compose
 
-Add the required variables to test the integration.
+Add the required variables to test the integration. Making sure to comment out or remove the `services` variable.
 ```shell
 cp test/terraform.tfvars.example test/terraform.tfvars
 ```
