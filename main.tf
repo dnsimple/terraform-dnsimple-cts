@@ -26,13 +26,13 @@ resource "dnsimple_zone_record" "records_a" {
 
 locals {
   consul_services = {
-    for id, s in var.services :
+    for id, service in var.services :
     id => {
-      "name"        = s.name,
-      "address"     = s.address,
-      "zone_name"   = s.meta["zone_name"],
-      "record_name" = s.meta["record_name"],
-      "record_ttl"  = lookup(s.meta, "record_ttl", 3600),
+      "name"        = service.name,
+      "address"     = service.address,
+      "zone_name"   = service.meta["zone_name"],
+      "record_name" = service.meta["record_name"],
+      "record_ttl"  = lookup(service.meta, "record_ttl", 3600),
     }
   }
 }

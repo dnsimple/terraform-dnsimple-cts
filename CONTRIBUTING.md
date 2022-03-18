@@ -105,4 +105,3 @@ The following instructions uses `$VERSION` as a placeholder, where `$VERSION` is
     git push origin --tags
     ```
 
-1. CI and goreleaser will handle the rest
