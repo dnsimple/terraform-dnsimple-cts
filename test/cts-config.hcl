@@ -27,11 +27,10 @@ driver "terraform" {
 task {
   name        = "dnsimple-task"
   description = "Create/delete/update DNS records"
-  version     = "1.0.0"
   module      = "/dnsimple-consul"
 
   condition "services" {
     names = ["web", "api"]
   }
-  variable_files = ["/dnsimple-consul/test/terraform.tfvars"]
+  variable_files = ["/terraform.tfvars"]
 }

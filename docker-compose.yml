@@ -30,22 +30,24 @@ services:
     restart: always
     networks:
       - consul
-    command: "agent -node=client-b -join=consul-server -encrypt aPuGh+5UDskRAbkLaXRzFoSOcSM+5vAK+NEYOWHJH7w="
+    ports:
+      - "8501:8500"
+    command: "agent -node=client-b -client=0.0.0.0 -join=consul-server -encrypt aPuGh+5UDskRAbkLaXRzFoSOcSM+5vAK+NEYOWHJH7w="
     depends_on:
       - consul-server
 
   cts:
     image: hashicorp/consul-terraform-sync:latest
     container_name: cts
-    restart: always
     volumes:
       - ./test/cts-config.hcl:/consul-terraform-sync/config/cts-config.hcl:rw
-      - ./:/dnsimple-consul:ro
+      - ./main.tf:/dnsimple-consul/main.tf:ro
+      - ./variables.tf:/dnsimple-consul/variables.tf:ro
+      - ./test/terraform.tfvars:/terraform.tfvars:ro
     networks:
       - consul
     ports:
       - "8558:8558"
-    command: "--config-file=/consul-terraform-sync/config/cts-config.hcl"
     depends_on:
       - consul-server
 

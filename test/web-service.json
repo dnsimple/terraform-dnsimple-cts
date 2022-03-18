@@ -1,0 +1,12 @@
+{
+  "ID": "web_1",
+  "Name": "web",
+  "Tags": ["foo"],
+  "Port": 8888,
+  "Meta": {
+    "zone_name": "amazon.works",
+    "record_name": "web",
+    "record_ttl": "60"
+  },
+  "Check": null
+}

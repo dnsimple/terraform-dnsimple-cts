@@ -22,19 +22,64 @@ cd terraform-dnsimple-dns-record-sync-nia
 
 ### Testing without running CTS and Consul
 
+Add the required variables to test the integration, making sure to uncomment the `services` variable.
+```shell
+cp test/terraform.tfvars.example test/terraform.tfvars
+```
+
+Plan:
 ```shell
 terraform plan --var-file="test/terraform.tfvars"
+```
+
+Apply:
+```shell
 terraform apply --var-file="test/terraform.tfvars"
 ```
 
 ### Testing e2e with Docker Compose
 
+Add the required variables to test the integration.
+```shell
+cp test/terraform.tfvars.example test/terraform.tfvars
+```
+
+NOTE: If you had previously uncommented the `services` variable make sure to remove the variable or comment the variable out else the integration would not work, as CTS produces `.tfvars` file with the same variable when it receives an update from the consul server.
+
+Startup the datacenter:
 ```shell
 docker compose up -d
 docker compose ps
 ```
 
-Coming soon.
+Follow the logs:
+```shell
+docker compose logs -f
+```
+
+In a separate terminal run helper script to register/deregester services. But first ensure to update the `Meta.zone_name` attribute of the service config in `test/api-service.json` and `test/web-service.json`.
+
+```sh
+./test/servicesctl.sh <service_name> <action>
+
+service_name - default: web, options: [web, api]
+action       - default: register, options: [register, deregester]
+```
+
+**Registerting a service:**
+```shell
+./test/servicesctl.sh api register
+```
+
+**Deregisterting a service:**
+```shell
+./test/servicesctl.sh api deregister
+```
+
+NOTES:
+* The CTS container is stateless, which means that after shutting it down the tfstate will be lost.
+* You can add more services by creating a config with the following convention `test/<service_name>-service.json`, and then you can use the helper the same way with the new service.
+
 
 ## Releasing
 
