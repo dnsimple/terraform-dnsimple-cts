@@ -22,7 +22,7 @@ Define the task in your HCL config file like so:
 task {
   name        = "dnsimple-task"
   description = "Create/delete/update DNS records"
-  module      = "/dnsimple-consul"
+  module      = "REPLACE WITH OUR MODULE URL"
 
   condition "services" {
     names = ["web", "api"]
