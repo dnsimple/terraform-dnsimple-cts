@@ -1,19 +1,16 @@
-DNSimple Consul-Terraform-Sync NIA
-===========================
+# DNSimple Consul-Terraform-Sync NIA module
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Terraform_Logo.svg/512px-Terraform_Logo.svg.png" width="300px">
 
 
-Requirements
-------------
+## Requirements
 
 - [Terraform](https://www.terraform.io/downloads.html)
 - [Consul](https://www.consul.io/docs/install)
 - [Consul-Terraform-Sync](https://www.consul.io/docs/nia/installation/install)
 - [DNSimple Provider](https://www.terraform.io/docs/providers/dnsimple/index.html)
 
-Using the sync task
-----------------------
+## Using the sync task
 
 Define the task in your HCL config file like so:
 
@@ -41,7 +38,6 @@ Ensure the services that you have specified have the following parameters added 
 
 For an exmaple please refer to [test/web-service.json](test/web-service.json). And [DNSimple Provider](https://www.terraform.io/docs/providers/dnsimple/index.html).
 
-Developing the Provider
----------------------------
+## Developing the Provider
 
 Please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
