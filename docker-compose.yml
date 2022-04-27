@@ -43,7 +43,7 @@ services:
       - ./test/cts-config.hcl:/consul-terraform-sync/config/cts-config.hcl:rw
       - ./main.tf:/dnsimple-consul/main.tf:ro
       - ./variables.tf:/dnsimple-consul/variables.tf:ro
-      - ./test/terraform.tfvars:/terraform.tfvars:ro
+      - ./test/terraform.tfvars:/consul-terraform-sync/config/terraform.tfvars:ro
     networks:
       - consul
     ports:

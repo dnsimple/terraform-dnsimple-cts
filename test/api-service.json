@@ -2,10 +2,9 @@
   "ID": "api_1",
   "Name": "api",
   "Tags": ["bar"],
-  "Address": "127.0.0.1",
   "Port": 8889,
   "Meta": {
-    "zone_name": "amazon.works",
+    "zone_name": "vegan.pizza",
     "record_name": "api"
   },
   "Check": null

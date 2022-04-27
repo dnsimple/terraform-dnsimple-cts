@@ -4,7 +4,7 @@
   "Tags": ["foo"],
   "Port": 8888,
   "Meta": {
-    "zone_name": "amazon.works",
+    "zone_name": "vegan.pizza",
     "record_name": "web",
     "record_ttl": "60"
   },

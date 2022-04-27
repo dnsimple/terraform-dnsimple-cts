@@ -32,5 +32,5 @@ task {
   condition "services" {
     names = ["web", "api"]
   }
-  variable_files = ["/terraform.tfvars"]
+  variable_files = ["/consul-terraform-sync/config/terraform.tfvars"]
 }
