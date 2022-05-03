@@ -41,3 +41,42 @@ For an exmaple please refer to [test/web-service.json](test/web-service.json). A
 ## Developing the Provider
 
 Please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_dnsimple"></a> [dnsimple](#requirement\_dnsimple) | >= 0.11.x |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_dnsimple"></a> [dnsimple](#provider\_dnsimple) | >= 0.11.x |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [dnsimple_zone_record.records_a](https://registry.terraform.io/providers/dnsimple/dnsimple/latest/docs/resources/zone_record) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_dnsimple_account"></a> [dnsimple\_account](#input\_dnsimple\_account) | The DNSimple account ID | `string` | n/a | yes |
+| <a name="input_dnsimple_sandbox"></a> [dnsimple\_sandbox](#input\_dnsimple\_sandbox) | If true, use the sandbox API endpoint | `bool` | n/a | yes |
+| <a name="input_dnsimple_token"></a> [dnsimple\_token](#input\_dnsimple\_token) | The API token used by DNSimple provider | `string` | n/a | yes |
+| <a name="input_services"></a> [services](#input\_services) | Consul services monitored by Consul NIA | <pre>map(<br>    object({<br>      id        = string<br>      name      = string<br>      address   = string<br>      port      = number<br>      meta      = map(string)<br>      tags      = list(string)<br>      namespace = string<br>      status    = string<br><br>      node                  = string<br>      node_id               = string<br>      node_address          = string<br>      node_datacenter       = string<br>      node_tagged_addresses = map(string)<br>      node_meta             = map(string)<br>    })<br>  )</pre> | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_service_map"></a> [service\_map](#output\_service\_map) | n/a |
+<!-- END_TF_DOCS -->
