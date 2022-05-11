@@ -1,4 +1,8 @@
-## master
+## main
+
+## 0.1.1
+
+Update dependency version lock on the DNSimple Provider to `>=0.11`
 
 ## 0.1.0
 
