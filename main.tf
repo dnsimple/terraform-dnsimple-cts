@@ -8,10 +8,10 @@ terraform {
 }
 
 provider "dnsimple" {
-  token       = var.dnsimple_token
-  account     = var.dnsimple_account
-  sandbox     = var.dnsimple_sandbox
-  user_agent  = "DNSimple-Consul-Terraform"
+  token      = var.dnsimple_token
+  account    = var.dnsimple_account
+  sandbox    = var.dnsimple_sandbox
+  user_agent = "DNSimple-Consul-Terraform"
 }
 
 # Add a record to a service specific domain
