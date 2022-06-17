@@ -2,15 +2,16 @@ terraform {
   required_providers {
     dnsimple = {
       source  = "dnsimple/dnsimple"
-      version = ">= 0.11"
+      version = ">= 0.13"
     }
   }
 }
 
 provider "dnsimple" {
-  token   = var.dnsimple_token
-  account = var.dnsimple_account
-  sandbox = var.dnsimple_sandbox
+  token      = var.dnsimple_token
+  account    = var.dnsimple_account
+  sandbox    = var.dnsimple_sandbox
+  user_agent = "DNSimple-Consul-Terraform"
 }
 
 # Add a record to a service specific domain
