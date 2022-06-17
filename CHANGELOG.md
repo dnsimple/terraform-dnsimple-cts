@@ -1,5 +1,7 @@
 ## main
 
+## 0.2.0
+
 * Added custom user agent in the Terraform DNSimple calls (dnsimple/terraform-dnsimple-cts#4)
 
 ## 0.1.1
