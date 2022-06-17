@@ -7,8 +7,8 @@
 Clone the repository and move into it:
 
 ```shell
-git clone git@github.com:dnsimple/terraform-dnsimple-dns-record-sync-nia.git
-cd terraform-dnsimple-dns-record-sync-nia
+git clone git@github.com:dnsimple/terraform-dnsimple-cts.git
+cd terraform-dnsimple-cts
 ```
 
 #### 2. Install dependencies
@@ -23,16 +23,19 @@ cd terraform-dnsimple-dns-record-sync-nia
 ### Testing without running CTS and Consul
 
 Add the required variables to test the integration.
+
 ```shell
 cp test/terraform.tfvars.example test/terraform.tfvars
 ```
 
 Plan:
+
 ```shell
 terraform plan --var-file="test/terraform.tfvars"
 ```
 
 Apply:
+
 ```shell
 terraform apply --var-file="test/terraform.tfvars"
 ```
@@ -40,6 +43,7 @@ terraform apply --var-file="test/terraform.tfvars"
 ### Testing e2e with Docker Compose
 
 Add the required variables to test the integration. Making sure to comment out or remove the `services` variable.
+
 ```shell
 cp test/terraform.tfvars.example test/terraform.tfvars
 ```
@@ -47,12 +51,14 @@ cp test/terraform.tfvars.example test/terraform.tfvars
 NOTE: If you had previously uncommented the `services` variable make sure to remove the variable or comment the variable out else the integration would not work, as CTS produces `.tfvars` file with the same variable when it receives an update from the consul server.
 
 Startup the datacenter:
+
 ```shell
 docker compose up -d
 docker compose ps
 ```
 
 Follow the logs:
+
 ```shell
 docker compose logs -f
 ```
@@ -67,16 +73,19 @@ action       - default: register, options: [register, deregester]
 ```
 
 **Registerting a service:**
+
 ```shell
 ./test/servicesctl.sh api register
 ```
 
 **Deregisterting a service:**
+
 ```shell
 ./test/servicesctl.sh api deregister
 ```
 
 NOTES:
+
 * The CTS container is stateless, which means that after shutting it down the tfstate will be lost.
 * You can add more services by creating a config with the following convention `test/<service_name>-service.json`, and then you can use the helper the same way with the new service.
 
@@ -87,7 +96,7 @@ The following instructions uses `$VERSION` as a placeholder, where `$VERSION` is
 
 1. Run the test suite and ensure all the tests pass.
 
-1. Finalize the `## master` section in `CHANGELOG.md` assigning the version.
+1. Finalize the `## main` section in `CHANGELOG.md` assigning the version.
 
 1. Commit and push the changes
 
