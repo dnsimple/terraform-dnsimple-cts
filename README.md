@@ -47,13 +47,13 @@ Please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_dnsimple"></a> [dnsimple](#requirement\_dnsimple) | >= 0.11.x |
+| <a name="requirement_dnsimple"></a> [dnsimple](#requirement\_dnsimple) | >= 0.13.x |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_dnsimple"></a> [dnsimple](#provider\_dnsimple) | >= 0.11.x |
+| <a name="provider_dnsimple"></a> [dnsimple](#provider\_dnsimple) | >= 0.13.x |
 
 ## Modules
 
