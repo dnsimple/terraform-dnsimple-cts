@@ -1,7 +1,7 @@
 {
   "ID": "web_1",
   "Name": "web",
-  "Tags": ["foo"],
+  "Tags": ["dnsimple", "foo"],
   "Port": 8888,
   "Meta": {
     "zone_name": "vegan.pizza",

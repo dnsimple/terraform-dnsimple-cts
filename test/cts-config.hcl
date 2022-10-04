@@ -30,7 +30,8 @@ task {
   module      = "/dnsimple-consul"
 
   condition "services" {
-    names = ["web", "api"]
+    regexp = ".+"
+    filter = "Service.Tags contains \"dnsimple\""
   }
   variable_files = ["/consul-terraform-sync/config/terraform.tfvars"]
 }

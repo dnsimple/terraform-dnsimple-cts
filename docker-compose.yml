@@ -23,6 +23,8 @@ services:
     networks:
       - consul
     command: "agent -node=client-a -join=consul-server -encrypt aPuGh+5UDskRAbkLaXRzFoSOcSM+5vAK+NEYOWHJH7w="
+    depends_on:
+      - consul-server
 
   consul-client-b:
     image: hashicorp/consul:1.11.4
