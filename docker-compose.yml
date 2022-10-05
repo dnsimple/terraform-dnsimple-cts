@@ -39,7 +39,7 @@ services:
       - consul-server
 
   cts:
-    image: hashicorp/consul-terraform-sync:latest
+    image: hashicorp/consul-terraform-sync:0.7
     container_name: cts
     volumes:
       - ./test/cts-config.hcl:/consul-terraform-sync/config/cts-config.hcl:rw
@@ -50,6 +50,7 @@ services:
       - consul
     ports:
       - "8558:8558"
+    command: "consul-terraform-sync start --config-dir /consul-terraform-sync/config"
     depends_on:
       - consul-server
 

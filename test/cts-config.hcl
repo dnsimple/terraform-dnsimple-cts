@@ -15,6 +15,14 @@ buffer_period {
 # Consul Block
 consul {
   address = "consul-server:8500"
+
+  service_registration {
+    service_name = "cts"
+    address = "cts"
+    default_check {
+      address = "http://cts:8558"
+    }
+  }
 }
 
 # Driver "terraform" block
