@@ -5,7 +5,6 @@ services:
   consul-server:
     image: hashicorp/consul:1.11.4
     container_name: consul-server
-    restart: always
     volumes:
       - ./test/server.json:/consul/config/server.json:ro
     networks:
@@ -19,7 +18,6 @@ services:
   consul-client-a:
     image: hashicorp/consul:1.11.4
     container_name: consul-client-a
-    restart: always
     networks:
       - consul
     command: "agent -node=client-a -join=consul-server -encrypt aPuGh+5UDskRAbkLaXRzFoSOcSM+5vAK+NEYOWHJH7w="
@@ -29,7 +27,6 @@ services:
   consul-client-b:
     image: hashicorp/consul:1.11.4
     container_name: consul-client-b
-    restart: always
     networks:
       - consul
     ports:
