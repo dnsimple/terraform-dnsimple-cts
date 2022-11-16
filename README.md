@@ -23,7 +23,8 @@ task {
   module      = "dnsimple/cts/dnsimple"
 
   condition "services" {
-    names = ["web", "api"]
+    regexp = ".+"
+    filter = "Service.Kind != \"connect-proxy\" and Service.Tags contains \"dnsimple\""
   }
   variable_files = ["/terraform.tfvars"]
 }
@@ -38,6 +39,8 @@ Ensure the services that you have specified have the following parameters added 
 * `meta.record_ttl`:`string` - (Optional) Valid TTL value which will be used for the A record. e.g. `600` - 10 minutes
 
 For an exmaple please refer to [test/web-service.json](test/web-service.json). And [DNSimple Provider](https://www.terraform.io/docs/providers/dnsimple/index.html).
+
+NOTE: In the example above as part of the filtering we exclude all events that are part of a Consul **connect proxy** service, as those events will result in duplication of DNS records.
 
 ## Developing the Provider
 
