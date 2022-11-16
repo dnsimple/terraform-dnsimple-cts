@@ -39,7 +39,7 @@ task {
 
   condition "services" {
     regexp = ".+"
-    filter = "Service.Tags contains \"dnsimple\""
+    filter = "Service.Kind != \"connect-proxy\" and Service.Tags contains \"dnsimple\""
   }
   variable_files = ["/consul-terraform-sync/config/terraform.tfvars"]
 }
