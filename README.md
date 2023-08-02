@@ -2,6 +2,8 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Terraform_Logo.svg/512px-Terraform_Logo.svg.png" width="300px">
 
+The DNSimple Consul-Terraform-Sync Network Infrastructure Automation module enables automated and dynamic management of DNSimple resources based on health and state changes in the Consul service catalog. Ensure consistent and scalable infrastructure with centralized control over DNSimple resources using the DNSimple Consul-Terraform-Sync NIA module.
+
 This module for Consul-Terraform-Sync has been tested with [HCP Consul server](https://cloud.hashicorp.com/products/consul).
 
 ## Requirements
