@@ -2,7 +2,7 @@ terraform {
   required_providers {
     dnsimple = {
       source  = "dnsimple/dnsimple"
-      version = ">= 0.13"
+      version = ">= 1.0"
     }
   }
 }
@@ -14,14 +14,14 @@ provider "dnsimple" {
   user_agent = "DNSimple-Consul-Terraform"
 }
 
-# Add a record to a service specific domain
-resource "dnsimple_zone_record" "records_a" {
+# Add a record of any type to a service specific domain
+resource "dnsimple_zone_record" "consul_service_records" {
   for_each = local.consul_services
 
   zone_name = each.value.zone_name
   name      = each.value.record_name
-  value     = each.value.address
-  type      = "A"
+  value     = each.value.record_content
+  type      = each.value.record_type
   ttl       = each.value.record_ttl
 }
 
@@ -29,11 +29,12 @@ locals {
   consul_services = {
     for id, service in var.services :
     id => {
-      "name"        = service.name,
-      "address"     = service.address,
-      "zone_name"   = service.meta["zone_name"],
-      "record_name" = service.meta["record_name"],
-      "record_ttl"  = lookup(service.meta, "record_ttl", 3600),
+      "name"           = service.name,
+      "zone_name"      = service.meta["zone_name"],
+      "record_name"    = service.meta["record_name"],
+      "record_content" = lookup(service.meta, "record_content", service.address),
+      "record_type"    = lookup(service.meta, "record_type", "A"),
+      "record_ttl"     = lookup(service.meta, "record_ttl", 3600),
     }
   }
 }
