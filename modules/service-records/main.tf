@@ -30,14 +30,6 @@ locals {
   }
 }
 
-output "defaults" {
-  value = var.defaults
-}
-
-output "recs" {
-  value = local.zone_records
-}
-
 data "util_replace" "record_names" {
   for_each = local.zone_records
 
@@ -62,12 +54,4 @@ resource "dnsimple_zone_record" "consul_service_records" {
 
   type = each.value.record_type
   ttl  = each.value.record_ttl
-}
-
-
-output "service_record_map" {
-  value = [
-    for record in dnsimple_zone_record.consul_service_records :
-    "${record.zone_name}:${record.name}:${record.type}:${record.ttl}:${record.value}"
-  ]
 }
