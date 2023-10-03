@@ -34,7 +34,7 @@ driver "terraform" {
 # Task Block
 task {
   name        = "dnsimple-task"
-  description = "Create/delete/update DNS records"
+  description = "Dynamic DNS record management in DNSimple based on Consul service metadata"
   module      = "/dnsimple-consul"
 
   condition "services" {
