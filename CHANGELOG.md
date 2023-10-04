@@ -1,5 +1,17 @@
 ## main
 
+## 1.1.0 (Unreleased)
+
+BUG FIXES:
+
+* Multiple record index format fixed previously `[index]` now `-index` (dnsimple/terraform-dnsimple-cts#13)
+* Experimental feature flag added to the module for `experiments = [module_variable_optional_attrs]` (dnsimple/terraform-dnsimple-cts#13)
+* Updated constraints in readme to reflect the supported versions of Terraform `>= 1.1.0` and `< 1.3.0` (dnsimple/terraform-dnsimple-cts#13)
+
+ENHANCEMENTS:
+
+* Added support for the `dnsimple_record_priority` attribute (dnsimple/terraform-dnsimple-cts#13)
+
 ## 1.0.0
 
 BREAKING CHANGES:
