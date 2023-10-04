@@ -2,7 +2,12 @@ terraform {
   required_providers {
     dnsimple = {
       source  = "dnsimple/dnsimple"
-      version = ">= 0.13"
+      version = ">= 1.0"
+    }
+
+    util = {
+      source  = "poseidon/util"
+      version = "0.2.2"
     }
   }
 }
@@ -14,26 +19,45 @@ provider "dnsimple" {
   user_agent = "DNSimple-Consul-Terraform"
 }
 
-# Add a record to a service specific domain
-resource "dnsimple_zone_record" "records_a" {
+module "service_records" {
+  source = "./modules/service-records"
+
   for_each = local.consul_services
 
-  zone_name = each.value.zone_name
-  name      = each.value.record_name
-  value     = each.value.address
-  type      = "A"
-  ttl       = each.value.record_ttl
+  consul_service = each.value.service
+  defaults       = each.value.defaults
+
+  zone_records = each.value.zone_records
 }
 
 locals {
   consul_services = {
     for id, service in var.services :
     id => {
-      "name"        = service.name,
-      "address"     = service.address,
-      "zone_name"   = service.meta["zone_name"],
-      "record_name" = service.meta["record_name"],
-      "record_ttl"  = lookup(service.meta, "record_ttl", 3600),
+      "name" = service.name,
+      "defaults" = {
+        "zone_name"   = lookup(service.meta, "dnsimple_default_zone", null),
+        "record_type" = lookup(service.meta, "dnsimple_default_record_type", "A"),
+        "record_ttl"  = lookup(service.meta, "dnsimple_default_record_ttl", 3600),
+      },
+      "zone_records" = concat([{
+        "zone_name"      = lookup(service.meta, "dnsimple_zone_name", null),
+        "record_name"    = lookup(service.meta, "dnsimple_record_name", null),
+        "record_content" = lookup(service.meta, "dnsimple_record_content", null),
+        "record_type"    = lookup(service.meta, "dnsimple_record_type", null),
+        "record_ttl"     = lookup(service.meta, "dnsimple_record_ttl", null),
+        }], [
+        for n in range(0, 60) :
+        {
+          "zone_name"      = lookup(service.meta, "dnsimple_zone_name[${n}]", null),
+          "record_name"    = lookup(service.meta, "dnsimple_record_name[${n}]", null),
+          "record_content" = lookup(service.meta, "dnsimple_record_content[${n}]", null),
+          "record_type"    = lookup(service.meta, "dnsimple_record_type[${n}]", null),
+          "record_ttl"     = lookup(service.meta, "dnsimple_record_ttl[${n}]", null),
+        } if lookup(service.meta, "dnsimple_record_content[${n}]", null) != null
+      ])
+
+      "service" = service,
     }
   }
 }
