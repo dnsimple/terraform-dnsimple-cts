@@ -8,7 +8,7 @@ This module for Consul-Terraform-Sync has been tested with [HCP Consul server](h
 
 ## Requirements
 
-- [Terraform](https://www.terraform.io/downloads.html)
+- [Terraform](https://www.terraform.io/downloads.html) >= 1.1.0
 - [Consul](https://www.consul.io/docs/install)
 - [Consul-Terraform-Sync](https://www.consul.io/docs/nia/installation/install)
 - [DNSimple Provider](https://www.terraform.io/docs/providers/dnsimple/index.html)
@@ -55,10 +55,10 @@ meta = {
   dnsimple_record_content = "$address"
   dnsimple_record_ttl = "600"
 
-  dnsimple_zone_name[1] = "meatlover.pizza"
-  dnsimple_record_name[1] = "api-internal"
-  dnsimple_record_content[1] = "$node_address"
-  dnsimple_record_ttl[1] = "300"
+  dnsimple_zone_name-1 = "meatlover.pizza"
+  dnsimple_record_name-1 = "api-internal"
+  dnsimple_record_content-1 = "$node_address"
+  dnsimple_record_ttl-1 = "300"
 }
 ```
 
@@ -99,9 +99,10 @@ Please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name                                                                   | Version  |
-| ---------------------------------------------------------------------- | -------- |
-| <a name="requirement_dnsimple"></a> [dnsimple](#requirement\_dnsimple) | >= 1.3.0 |
+| Name                                                                   | Version           |
+| ---------------------------------------------------------------------- | ----------------- |
+| Terraform                                                              | >= 1.1.0, < 1.3.0 |
+| <a name="requirement_dnsimple"></a> [dnsimple](#requirement\_dnsimple) | >= 1.3.0          |
 
 ## Providers
 

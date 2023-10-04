@@ -41,20 +41,22 @@ locals {
         "record_ttl"  = lookup(service.meta, "dnsimple_default_record_ttl", 3600),
       },
       "zone_records" = concat([{
-        "zone_name"      = lookup(service.meta, "dnsimple_zone_name", null),
-        "record_name"    = lookup(service.meta, "dnsimple_record_name", null),
-        "record_content" = lookup(service.meta, "dnsimple_record_content", null),
-        "record_type"    = lookup(service.meta, "dnsimple_record_type", null),
-        "record_ttl"     = lookup(service.meta, "dnsimple_record_ttl", null),
+        "zone_name"       = lookup(service.meta, "dnsimple_zone_name", null),
+        "record_name"     = lookup(service.meta, "dnsimple_record_name", null),
+        "record_content"  = lookup(service.meta, "dnsimple_record_content", null),
+        "record_type"     = lookup(service.meta, "dnsimple_record_type", null),
+        "record_ttl"      = lookup(service.meta, "dnsimple_record_ttl", null),
+        "record_priority" = lookup(service.meta, "dnsimple_record_priority", null),
         }], [
         for n in range(0, 60) :
         {
-          "zone_name"      = lookup(service.meta, "dnsimple_zone_name[${n}]", null),
-          "record_name"    = lookup(service.meta, "dnsimple_record_name[${n}]", null),
-          "record_content" = lookup(service.meta, "dnsimple_record_content[${n}]", null),
-          "record_type"    = lookup(service.meta, "dnsimple_record_type[${n}]", null),
-          "record_ttl"     = lookup(service.meta, "dnsimple_record_ttl[${n}]", null),
-        } if lookup(service.meta, "dnsimple_record_content[${n}]", null) != null
+          "zone_name"       = lookup(service.meta, "dnsimple_zone_name-${n}", null),
+          "record_name"     = lookup(service.meta, "dnsimple_record_name-${n}", null),
+          "record_content"  = lookup(service.meta, "dnsimple_record_content-${n}", null),
+          "record_type"     = lookup(service.meta, "dnsimple_record_type-${n}", null),
+          "record_ttl"      = lookup(service.meta, "dnsimple_record_ttl-${n}", null),
+          "record_priority" = lookup(service.meta, "dnsimple_record_priority-${n}", null),
+        } if lookup(service.meta, "dnsimple_record_content-${n}", null) != null
       ])
 
       "service" = service,

@@ -27,6 +27,7 @@ consul {
 
 # Driver "terraform" block
 driver "terraform" {
+  version     = "1.1.0"
   log         = true
   persist_log = false
 }
