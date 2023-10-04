@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: '12:00'
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+
+  - package-ecosystem: "terraform"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels:
+      - dependencies
