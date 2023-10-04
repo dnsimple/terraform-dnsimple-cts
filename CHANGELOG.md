@@ -1,6 +1,6 @@
 ## main
 
-## 1.0.0 (Unreleased)
+## 1.0.0
 
 BREAKING CHANGES:
 
