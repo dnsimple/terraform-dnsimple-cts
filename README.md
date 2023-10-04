@@ -45,6 +45,7 @@ The services that you have specified can have the following parameters added in 
 * `meta.dnsimple_record_ttl`:`string` - (Optional) Valid TTL value which will be used for the record. e.g. `600` - 10 minutes (Default: `3600` - 1 hour)
 * `meta.dnsimple_record_type`:`string` - (Optional) Valid record type which will be used for the record. And is only optional if the `meta.dnsimple_default_record_type` is specified. e.g. `A` (Default: `A`)
 * `meta.dnsimple_record_content`:`string` - (Optional) Valid record content which will be used for the record. e.g. `$address`, `127.0.0.1`
+* `meta.dnsimple_record_priority`:`string` - (Optional) Valid record priority which will be used for the record. e.g. `10` it is only used for record types that support it. e.g. `MX` and `SRV`
 
 To create more records for a single service you can add an index (max index value is 60) to the above attributes for example:
 
