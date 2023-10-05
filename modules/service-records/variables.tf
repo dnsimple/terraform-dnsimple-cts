@@ -1,10 +1,11 @@
 variable "zone_records" {
   type = list(object({
-    zone_name      = optional(string)
-    record_name    = string
-    record_content = string
-    record_type    = optional(string)
-    record_ttl     = optional(number)
+    zone_name       = optional(string)
+    record_name     = string
+    record_content  = string
+    record_type     = optional(string)
+    record_ttl      = optional(number)
+    record_priority = optional(number)
   }))
 }
 

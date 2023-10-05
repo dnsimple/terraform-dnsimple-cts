@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   consul-server:
-    image: hashicorp/consul:1.11.4
+    image: hashicorp/consul:1.15
     container_name: consul-server
     volumes:
       - ./test/server.json:/consul/config/server.json:ro
@@ -16,7 +16,7 @@ services:
     command: "agent -bootstrap-expect=1"
 
   consul-client-a:
-    image: hashicorp/consul:1.11.4
+    image: hashicorp/consul:1.15
     container_name: consul-client-a
     networks:
       - consul
@@ -25,7 +25,7 @@ services:
       - consul-server
 
   consul-client-b:
-    image: hashicorp/consul:1.11.4
+    image: hashicorp/consul:1.15
     container_name: consul-client-b
     networks:
       - consul
@@ -42,6 +42,7 @@ services:
       - ./test/cts-config.hcl:/consul-terraform-sync/config/cts-config.hcl:rw
       - ./main.tf:/dnsimple-consul/main.tf:ro
       - ./variables.tf:/dnsimple-consul/variables.tf:ro
+      - ./modules:/dnsimple-consul/modules:ro
       - ./test/terraform.tfvars:/consul-terraform-sync/config/terraform.tfvars:ro
     networks:
       - consul
