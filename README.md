@@ -8,7 +8,7 @@ This module for Consul-Terraform-Sync has been tested with [HCP Consul server](h
 
 ## Requirements
 
-- [Terraform](https://www.terraform.io/downloads.html) >= 1.1.0
+- [Terraform](https://www.terraform.io/downloads.html) >= 1.3.0
 - [Consul](https://www.consul.io/docs/install)
 - [Consul-Terraform-Sync](https://www.consul.io/docs/nia/installation/install)
 - [DNSimple Provider](https://www.terraform.io/docs/providers/dnsimple/index.html)
@@ -102,7 +102,7 @@ Please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
 | Name                                                                   | Version           |
 | ---------------------------------------------------------------------- | ----------------- |
-| Terraform                                                              | >= 1.1.0, < 1.3.0 |
+| Terraform                                                              | >= 1.3.0, < 1.7.5 |
 | <a name="requirement_dnsimple"></a> [dnsimple](#requirement\_dnsimple) | >= 1.3.0          |
 
 ## Providers

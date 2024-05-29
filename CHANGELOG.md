@@ -1,5 +1,11 @@
 ## main
 
+## 1.2.0
+
+NOTES:
+
+* Updated constraints in readme to reflect the supported versions of Terraform `>= 1.3.0` and `<= 1.7.5`
+
 ## 1.1.0
 
 BUG FIXES:
