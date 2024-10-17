@@ -1,5 +1,15 @@
 ## main
 
+## 1.3.0
+
+ENHANCEMENTS:
+
+* As the `module_variable_optional_attrs` experiment has concluded successfully, the feature flag has been removed and the module now supports optional attributes with defaults. Because of this we have also pinned the Terraform version to `>= 1.3.0`.
+
+NOTES:
+
+* Updated constraints in readme to reflect the supported versions of Terraform `>= 1.3.0` and `<= 1.9.0`
+
 ## 1.2.0
 
 NOTES:
