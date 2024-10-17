@@ -33,11 +33,7 @@ variable "consul_service" {
 variable "defaults" {
   type = object({
     zone_name   = optional(string)
-    record_type = optional(string)
-    record_ttl  = optional(number)
+    record_type = optional(string, "A")
+    record_ttl  = optional(number, 3600)
   })
-  default = {
-    record_ttl  = 3600
-    record_type = "A"
-  }
 }
