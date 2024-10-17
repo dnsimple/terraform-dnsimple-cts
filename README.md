@@ -102,7 +102,7 @@ Please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
 | Name                                                                   | Version           |
 | ---------------------------------------------------------------------- | ----------------- |
-| Terraform                                                              | >= 1.3.0, < 1.7.5 |
+| Terraform                                                              | >= 1.3.0, < 1.9.0 |
 | <a name="requirement_dnsimple"></a> [dnsimple](#requirement\_dnsimple) | >= 1.3.0          |
 
 ## Providers
