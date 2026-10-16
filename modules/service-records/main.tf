@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.3.0"
+  required_version = ">= 1.16"
 
   required_providers {
     dnsimple = {
@@ -9,7 +9,7 @@ terraform {
 
     util = {
       source  = "poseidon/util"
-      version = "0.3.0"
+      version = "0.4.0"
     }
   }
 }
