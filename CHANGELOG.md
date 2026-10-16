@@ -1,5 +1,13 @@
 ## main
 
+NOTES:
+
+* Raised the minimum supported Terraform version to `>= 1.16` and updated CI to Terraform 1.16.
+
+BUG FIXES:
+
+* Aligned the `poseidon/util` pin in the `service-records` submodule with the root module (`0.4.0`); the mismatched pins made `terraform init` fail.
+
 ## 1.3.0
 
 ENHANCEMENTS:
